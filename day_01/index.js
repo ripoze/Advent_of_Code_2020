@@ -1,4 +1,4 @@
-var data = require('fs').readFileSync('day_01/input.txt', 'utf8')
+var data = require('fs').readFileSync('input.txt', 'utf8')
 
 data = data.split('\n')
 data.pop()
