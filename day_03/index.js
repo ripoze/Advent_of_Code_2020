@@ -21,14 +21,12 @@ console.log(`Part 2: ${total}`); //2106818610
 function getTreeCount(map, dx, dy) {
     let y = 0
     let x = 0
-    let opens, trees = 0
+    let trees = 0
 
     while (y < map.length) {
         x += dx
         y += dy
-        if (x > map[0].length - 1) x -= map[0].length
-        if (map[y] && map[y][x] == '.') opens++
-        if (map[y] && map[y][x] == '#') trees++
+        trees += map[y] && map[y][x % map[0].length] == '#' ? 1 : 0
     }
     return trees
 }
