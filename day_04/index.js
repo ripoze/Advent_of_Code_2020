@@ -3,14 +3,12 @@ var data = require('fs').readFileSync('input.txt', 'utf8')
 let passports = []
 data = data
     .split('\n\n')
-    .map(row => row.replace(/\n/g, ' '))
-    .map(row => row.split(' '))
+    .map(row => row.split(/\s/))
     .map(row => {
         let passport = {}
         row.map(item => {
             fields = item.match(/(\w+):(\S+)/)
             if (fields && fields[1] && fields[2]) passport[fields[1]] = fields[2]
-            else console.log(item);
         })
         passports.push(passport)
     })
