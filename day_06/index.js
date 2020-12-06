@@ -19,24 +19,22 @@ function countAnyoneYes(data) {
 }
 
 function countEveryoneYes(data) {
-    let count=0
+
     answers = []
 
-    data.map(group => {
-        let count = group.split('\n').length
-        group = group.replace(/\n/g, '')
-        answers.push(
-            {
-                answers: count,
-                uniq: [...new Set(group)],
-                all: group.split('')
-            })
-    })
+    return data
+        .map(group => {
+            let count = group.split('\n').length
+            let uniq = [...new Set(group)]
+            let all = group.split('')
 
-    answers.map(c => {
-        c.uniq.map(a =>{
-            if (c.all.filter(v => a===v).length == c.answers) count ++
+            group = group.replace(/\n/g, '')
+
+            return uniq
+                .map(a => {
+                    return all.filter(v => a === v).length == count
+                })
+                .reduce((sum, c) => sum += c, 0)
         })
-    })
-    return count
+        .reduce((sum, c) => sum += c, 0)
 }
