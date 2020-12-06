@@ -19,9 +19,6 @@ function countAnyoneYes(data) {
 }
 
 function countEveryoneYes(data) {
-
-    answers = []
-
     return data
         .map(group => {
             let count = group.split('\n').length
