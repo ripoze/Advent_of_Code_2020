@@ -28,8 +28,6 @@ function countEveryoneYes(data) {
             let uniq = [...new Set(group)]
             let all = group.split('')
 
-            group = group.replace(/\n/g, '')
-
             return uniq
                 .map(a => {
                     return all.filter(v => a === v).length == count
