@@ -23,7 +23,7 @@ console.log(`Part 2: ${countParentBags(data, 'shiny gold')}`); //6260
 function canBagContainColor(data, bag, targetBag) {
     bag = data.filter(c => c.bag == bag)[0]
     if (!bag.contents) return false //contains no bags
-    if (bag.contents.filter(item => item.color == targetBag).length > 0) return true //contains bag directly
+    if (bag.contents.some(item => item.color == targetBag)) return true //contains bag directly
     if (bag.contents.some(content => canBagContainColor(data, content.color, targetBag))) return true
 }
 
